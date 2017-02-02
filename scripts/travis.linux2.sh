@@ -11,7 +11,7 @@ set -o errexit # Exit if command failed.
 set -o pipefail # Exit if pipe failed.
 set -o nounset # Exit if variable not set.
 
-IFS=$'\n\t'
+# IFS=$'\n\t'
 
 echo $#
 echo "( $@ )"
