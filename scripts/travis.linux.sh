@@ -25,8 +25,8 @@ function do_before_install() {
   gem install html-proofer
   htmlproofer --version
 
-  bundle update
-  
+  # bundle update
+
   return 0
 }
 
