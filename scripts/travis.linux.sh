@@ -22,7 +22,7 @@ site="${HOME}/ilg-ul/test-jekyll.git"
 
 function do_before_install() {
 
-  pwd
+  cd ${HOME}
   gem install html-proofer
   htmlproofer --version
 
@@ -40,10 +40,10 @@ function do_before_script() {
 }
 
 function do_script() {
-  
+
   ls -lL
   bundle exec jekyll build --destination ${site}
-  bundle exec htmlproofer ${site}
+  # bundle exec htmlproofer ${site}
 
   return 0
 }
