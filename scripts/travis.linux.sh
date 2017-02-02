@@ -48,6 +48,17 @@ function do_script() {
   return 0
 }
 
+
+function do_after_success() {
+
+  return 0
+}
+
+function do_after_failure() {
+
+  return 0
+}
+
 function do_deploy() {
 
   return 0
@@ -77,6 +88,14 @@ then
 
   script)
     do_script "$@"
+    ;;
+
+  after_success)
+    do_after_success "$@"
+    ;;
+
+  after_failure)
+    do_after_failure "$@"
     ;;
 
   deploy)

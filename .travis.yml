@@ -9,6 +9,12 @@ before_script:
 script:
   - bash scripts/travis.linux.sh script
 
+after_success:
+  - bash scripts/travis.linux.sh after_success
+
+after_failure:
+  - bash scripts/travis.linux.sh after_failure
+
 deploy:
   provider: script
   script: bash scripts/travis.linux.sh deploy
