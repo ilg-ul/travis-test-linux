@@ -1,0 +1,5 @@
+_site
+_site_local
+.DS_Store
+Gemfile.lock
+vscode.mac.command

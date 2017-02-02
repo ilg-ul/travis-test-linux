@@ -21,19 +21,6 @@ IFS=$'\n\t'
 
 function do_before_install() {
 
-  uname -a
-
-  gcc --version
-  which gcc
-  java -version
-  which java
-
-  # cat /Users/travis/build.sh
-  env
-  # ls -l /usr/local/bin
-  id
-  whoami
-  who
 
   return 0
 }
@@ -44,7 +31,8 @@ function do_before_script() {
 }
 
 function do_script() {
-
+  mkdir -p ../../xcdl.github.io.git
+  bundle exec jekyll build --destination ../../xcdl.github.io.git
   return 0
 }
 
