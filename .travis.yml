@@ -1,4 +1,8 @@
-language: c++
+# language: c++
+
+language: ruby
+rvm:
+  - 2.3
   
 before_install:
   - bash scripts/travis.linux.sh before_install
@@ -15,11 +19,11 @@ after_success:
 after_failure:
   - bash scripts/travis.linux.sh after_failure
 
-deploy:
-  provider: script
-  script: bash scripts/travis.linux.sh deploy
-  on:
-    branch: master
+# deploy:
+#  provider: script
+#  script: bash scripts/travis.linux.sh deploy
+#  on:
+#    branch: master
   
 after_script:
   - bash scripts/travis.linux.sh after_script
