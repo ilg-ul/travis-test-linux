@@ -86,7 +86,7 @@ then
     ;;
 
   *)
-    echo "Unsupported command" "${action}"" "$@"
+    echo "Unsupported command" "${action}" "$@"
     exit 1
     ;;
     
