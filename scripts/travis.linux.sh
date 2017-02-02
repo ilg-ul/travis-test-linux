@@ -25,6 +25,8 @@ function do_before_install() {
   gem install html-proofer
   htmlproofer --version
 
+  bundle update
+  
   return 0
 }
 
@@ -40,7 +42,7 @@ function do_script() {
 
   bundle exec jekyll build --destination ${site}
   bundle exec htmlproofer ${site}
-  
+
   return 0
 }
 
