@@ -1,6 +1,8 @@
 language: c++
   
 before_install:
+  - pwd
+  - env
   - export DEBUG=1
   - bash scripts/travis.linux.sh before_install 1 2 3
 
