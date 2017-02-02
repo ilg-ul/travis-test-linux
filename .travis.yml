@@ -11,7 +11,7 @@ _before_script:
 
 script:
   - # ls -lLAR $HOME
-  - cat $HOME/build.sh
+  - # cat $HOME/build.sh
   - pwd
   - env
   - export DEBUG=-x
