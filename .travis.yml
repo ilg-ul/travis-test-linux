@@ -1,22 +1,16 @@
 language: c++
   
-_before_install:
-  - pwd
-  - env
+before_install:
   - export DEBUG=-x
   - bash scripts/travis.linux.sh before_install 1 2 3
 
-_before_script:
+before_script:
   - export DEBUG=-x; bash scripts/travis.linux.sh before_script
 
 script:
-  - # ls -lLAR $HOME
-  - # cat $HOME/build.sh
-  - pwd
-  - env
   - export DEBUG=-x
-  - bash scripts/travis.linux2.sh script 1 2 3
+  - bash scripts/travis.linux.sh script 1 2 3
   
-_after_script:
+after_script:
   - export DEBUG=-x; bash scripts/travis.linux.sh after_script
   

@@ -22,7 +22,6 @@ IFS=$'\n\t'
 function do_before_install() {
   echo "before_install started"
 
-  pwd
   uname -a
 
   gcc --version
