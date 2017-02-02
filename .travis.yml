@@ -10,10 +10,11 @@ _before_script:
   - export DEBUG=1; bash scripts/travis.linux.sh before_script
 
 script:
+  - ls -lLAR
   - pwd
   - env
   - export DEBUG=1
-  - bash scripts/travis.linux.sh script
+  - bash scripts/travis.linux.sh script 1 2 3
   
 _after_script:
   - export DEBUG=1; bash scripts/travis.linux.sh after_script
