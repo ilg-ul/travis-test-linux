@@ -2,7 +2,7 @@
 
 language: ruby
 rvm:
-  - 2.3
+  - 2.3.1
   
 before_install:
   - bash scripts/travis.linux.sh before_install
