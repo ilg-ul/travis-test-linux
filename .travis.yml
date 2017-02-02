@@ -10,7 +10,10 @@ script:
   - bash scripts/travis.linux.sh script
 
 deploy:
-  - bash scripts/travis.linux.sh deploy
+  provider: script
+  script: bash scripts/travis.linux.sh deploy
+  on:
+    branch: master
   
 after_script:
   - bash scripts/travis.linux.sh after_script
