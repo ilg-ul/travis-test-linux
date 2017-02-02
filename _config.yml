@@ -12,6 +12,7 @@ exclude:
   - README.md
   - '*.command'
   - localhost-4002.webloc
+  - vendor
 
 # Used in sitemap.xml.
 url: "http://ilg-ul.github.io" # the base hostname & protocol for your site.
