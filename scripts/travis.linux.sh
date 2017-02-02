@@ -18,6 +18,7 @@ set -o nounset # Exit if variable not set.
 IFS=$'\n\t'
 
 # -----------------------------------------------------------------------------
+site="${HOME}/ilg-ul/test-jekyll.git"
 
 function do_before_install() {
 
@@ -26,13 +27,14 @@ function do_before_install() {
 }
 
 function do_before_script() {
-
+  cd ${HOME}
+  git clone https://github.com/ilg-ul/test-jekyll.git ilg-ul/test-jekyll.git
   return 0
 }
 
 function do_script() {
-  mkdir -p ../../xcdl.github.io.git
-  bundle exec jekyll build --destination ../../xcdl.github.io.git
+  bundle exec jekyll build --destination ${site}
+  bundle exec htmlproofer ${site}
   return 0
 }
 
