@@ -1,13 +1,16 @@
 language: c++
   
 before_install:
-  - bash scripts/travis.linux.sh before_install 1 2 3
+  - bash scripts/travis.linux.sh before_install
 
 before_script:
   - bash scripts/travis.linux.sh before_script
 
 script:
-  - bash scripts/travis.linux.sh script 1 2 3
+  - bash scripts/travis.linux.sh script
+
+deploy:
+  - bash scripts/travis.linux.sh deploy
   
 after_script:
   - bash scripts/travis.linux.sh after_script

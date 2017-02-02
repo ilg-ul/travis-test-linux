@@ -20,7 +20,6 @@ IFS=$'\n\t'
 # -----------------------------------------------------------------------------
 
 function do_before_install() {
-  echo "before_install started"
 
   uname -a
 
@@ -36,28 +35,26 @@ function do_before_install() {
   whoami
   who
 
-  echo "before_install completed"
   return 0
 }
 
 function do_before_script() {
-  echo "before_script started"
 
-  echo "before_script completed"
   return 0
 }
 
 function do_script() {
-  echo "script started"
 
-  echo "script completed"
+  return 0
+}
+
+function do_deploy() {
+
   return 0
 }
 
 function do_after_script() {
-  echo "after_script started"
 
-  echo "after_script completed"
   return 0
 }
 
@@ -80,6 +77,10 @@ then
 
   script)
     do_script "$@"
+    ;;
+
+  deploy)
+    do_deploy "$@"
     ;;
 
   after_script)
