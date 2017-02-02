@@ -65,7 +65,7 @@ function do_after_script() {
 echo $#
 echo #@
 
-if [ $# -gt 1 ]
+if [ $# -ge 1 ]
 then
   action=$1
   shift
