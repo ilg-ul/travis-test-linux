@@ -62,6 +62,9 @@ function do_after_script() {
   return 0
 }
 
+echo $#
+echo #@
+
 if [ $# -gt 1 ]
 then
   action=$1
