@@ -73,16 +73,17 @@ function do_script() {
 
   # bundle exec htmlproofer "${site}"
 
-  # Present here not in after_success, to break the build if not successful.
-  echo "Deploy to GitHub pages..."
+  # ---------------------------------------------------------------------------
+  # The deployment code is present here not in after_success, 
+  # to break the build if not successful.
+
+  cd "${site}"
 
   if [ "${TRAVIS_BRANCH}" != "master" ]; 
   then 
     echo "Not on master branch, skip deploy."
     return 0; 
   fi
-
-  cd "${site}"
 
   if [ -z `git diff --exit-code` ]; then
     echo "No changes to the output on this push; skip deploy."
@@ -93,6 +94,8 @@ function do_script() {
   git commit -m "Travis CI Deploy of ${TRAVIS_COMMIT}" 
 
   # git status
+
+  echo "Deploy to GitHub pages..."
 
   # Must be quiet and have no output, to not reveal the key.
   git push --force --quiet "https://${GITHUB_TOKEN}@github.com/${GITHUB_DEST_REPO}" master > /dev/null 2>&1
