@@ -33,15 +33,19 @@ site="${HOME}/out/${GITHUB_DEST_REPO}"
 
 function do_before_install() {
 
+  echo "Before install, bring extra tools..."
+
   cd "${HOME}"
 
-  gem install html-proofer
-  htmlproofer --version
+  # gem install html-proofer
+  # htmlproofer --version
 
   return 0
 }
 
 function do_before_script() {
+
+  echo "Before starting the test, clone the destination repo..."
 
   cd "${HOME}"
 
@@ -55,18 +59,21 @@ function do_before_script() {
 
 function do_script() {
 
+  echo "The main test code; perform the Jekyll build..."
+  
   cd "${slug}"
 
   # Be sure the 'vendor/' folder is excluded, otherwise a strage error occurs.
   bundle exec jekyll build --destination "${site}"
 
-  bundle exec htmlproofer "${site}"
+  # bundle exec htmlproofer "${site}"
 
   return 0
 }
 
-
 function do_after_success() {
+
+  echo "After success, deploy to GitHub pages..."
 
   if [ "${TRAVIS_BRANCH}" != "master" ]; 
   then 
@@ -89,17 +96,19 @@ function do_after_success() {
 
 function do_after_failure() {
 
+  echo "Nothing to do after failure..."
   return 0
 }
 
 function do_deploy() {
 
-  echo "deploy start"
+  echo "Nothing to do to deploy..."
   return 0
 }
 
 function do_after_script() {
 
+  echo "Nothing to do after script..."
   return 0
 }
 
