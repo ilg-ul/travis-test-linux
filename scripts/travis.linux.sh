@@ -74,7 +74,7 @@ function do_script() {
 
   git status
 
-  git push --force --quiet "https://${GITHUB_TOKEN}@$github.com/${GITHUB_REPO}" master
+  git push --force --quiet "https://${GITHUB_TOKEN}@$github.com/${GITHUB_DEST_REPO}" master
 
   if [ "${TRAVIS_BRANCH}" != "master" ]; then exit 0; fi
 
@@ -88,11 +88,10 @@ function do_after_success() {
 
   git add --all .
   git commit -m "Deploy to Github Pages"
-  env
 
   git status
 
-  git push --force --quiet "https://${GITHUB_TOKEN}@$github.com/${GITHUB_REPO}" master
+  git push --force --quiet "https://${GITHUB_TOKEN}@$github.com/${GITHUB_DEST_REPO}" master
 
   return 0
 }
