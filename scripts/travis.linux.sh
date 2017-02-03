@@ -36,7 +36,7 @@ function do_before_install() {
 function do_before_script() {
 
   cd "${HOME}"
-  ls -lL "${slug}"
+  # ls -lL "${slug}"
 
   git config --global user.email "ilg@livius.net"
   git config --global user.name "Liviu Ionescu (Travis CI)"
