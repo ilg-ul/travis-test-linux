@@ -28,10 +28,13 @@ site="${HOME}/${GITHUB_DEST_REPO}"
 
 # -----------------------------------------------------------------------------
 
+# Not available:
+#   tree
+
 function do_before_install() {
 
   cd "${HOME}"
-  tree
+  # tree
   ls -lL "${slug}"
 
   # gem install html-proofer
