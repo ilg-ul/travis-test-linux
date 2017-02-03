@@ -24,7 +24,6 @@ slug="${HOME}/${TRAVIS_REPO_SLUG}"
 function do_before_install() {
 
   cd "${HOME}"
-  ls -lL cd "${slug}"
 
   # gem install html-proofer
   # htmlproofer --version
@@ -37,6 +36,7 @@ function do_before_install() {
 function do_before_script() {
 
   cd "${HOME}"
+  ls -lL "${slug}"
 
   git config --global user.email "ilg@livius.net"
   git config --global user.name "Liviu Ionescu (Travis CI)"
