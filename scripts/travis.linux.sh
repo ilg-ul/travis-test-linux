@@ -19,6 +19,8 @@ IFS=$'\n\t'
 
 # -----------------------------------------------------------------------------
 
+# https://docs.travis-ci.com/user/environment-variables/#Default-Environment-Variables
+
 build="${HOME}/build"
 slug="${build}/${TRAVIS_REPO_SLUG}"
 
@@ -88,7 +90,7 @@ function do_script() {
   fi
 
   git add --all .
-  git commit -m "Deploy to Github Pages ${TRAVIS_COMMIT}" 
+  git commit -m "Travis CI Deploy of ${TRAVIS_COMMIT}" 
 
   # git status
 
