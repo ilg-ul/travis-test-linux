@@ -31,6 +31,7 @@ site="${HOME}/out/${GITHUB_DEST_REPO}"
 # Not available:
 #   tree
 
+# Errors in this function will break the build.
 function do_before_install() {
 
   echo "Before install, bring extra tools..."
@@ -43,6 +44,7 @@ function do_before_install() {
   return 0
 }
 
+# Errors in this function will break the build.
 function do_before_script() {
 
   echo "Before starting the test, clone the destination repo..."
@@ -57,6 +59,7 @@ function do_before_script() {
   return 0
 }
 
+# Errors in this function will break the build.
 function do_script() {
 
   echo "The main test code; perform the Jekyll build..."
@@ -68,12 +71,8 @@ function do_script() {
 
   # bundle exec htmlproofer "${site}"
 
-  return 0
-}
-
-function do_after_success() {
-
-  echo "After success, deploy to GitHub pages..."
+  # Present here not in after_success, to break the build if not successful.
+  echo "If successful, deploy to GitHub pages..."
 
   if [ "${TRAVIS_BRANCH}" != "master" ]; 
   then 
@@ -91,8 +90,15 @@ function do_after_success() {
   # Must be quiet and have no output, to not reveal the key.
   git push --force --quiet "https://${GITHUB_TOKEN}@github.com/${GITHUB_DEST_REPO}" master > /dev/null 2>&1
 
-  # Try to fail deployment.
-  return 1
+  return 0
+}
+
+# Errors in the following function will not break the build.
+
+function do_after_success() {
+
+  echo "Nothing to do after success..."
+  return 0
 }
 
 function do_after_failure() {

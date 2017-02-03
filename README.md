@@ -1,5 +1,6 @@
-# The XCDL Web Site source
+[![Build Status](https://travis-ci.org/ilg-ul/travis-test-linux.svg?branch=develop)](https://travis-ci.org/ilg-ul/travis-test-linux) 
 
+# The XCDL Web Site source
 
 ## Overview
 
