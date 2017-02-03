@@ -91,7 +91,8 @@ function do_after_success() {
   # Must be quiet and have no output, to not reveal the key.
   git push --force --quiet "https://${GITHUB_TOKEN}@github.com/${GITHUB_DEST_REPO}" master > /dev/null 2>&1
 
-  return 0
+  # Try to fail deployment.
+  return 1
 }
 
 function do_after_failure() {

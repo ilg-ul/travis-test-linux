@@ -27,11 +27,12 @@ after_success:
 after_failure:
   - bash scripts/travis.linux.sh after_failure
 
-deploy:
-  provider: script
-  script: bash scripts/travis.linux.sh deploy
-  on:
-    branch: master
+# Deploy via script not functional (or not understood).
+# deploy:
+#  provider: script
+#  script: bash scripts/travis.linux.sh deploy
+#  on:
+#    branch: master
   
 after_script:
   - bash scripts/travis.linux.sh after_script
