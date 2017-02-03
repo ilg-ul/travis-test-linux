@@ -72,7 +72,7 @@ function do_script() {
   # bundle exec htmlproofer "${site}"
 
   # Present here not in after_success, to break the build if not successful.
-  echo "If successful, deploy to GitHub pages..."
+  echo "Deploy to GitHub pages..."
 
   if [ "${TRAVIS_BRANCH}" != "master" ]; 
   then 
@@ -82,8 +82,13 @@ function do_script() {
 
   cd "${site}"
 
+  if [ -z `git diff --exit-code` ]; then
+    echo "No changes to the output on this push; skip deploy."
+    exit 0
+  fi
+
   git add --all .
-  git commit -m "Deploy to Github Pages"
+  git commit -m "Deploy to Github Pages ${TRAVIS_COMMIT}" 
 
   # git status
 
