@@ -24,7 +24,6 @@ slug="${HOME}/${TRAVIS_REPO_SLUG}.git"
 function do_before_install() {
 
   cd "${HOME}"
-  ls -lL "${slug}"
 
   # gem install html-proofer
   # htmlproofer --version
