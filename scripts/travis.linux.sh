@@ -88,6 +88,7 @@ function do_script() {
   is_dirty=`git status --porcelain`
   # Should detect new, modified, removed files.
   if [ -z "${is_dirty}" ]
+  then
     echo "No changes to the output on this push; skip deploy."
     exit 0
   fi
