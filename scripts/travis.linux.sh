@@ -52,7 +52,7 @@ function do_before_script() {
   git config --global user.email "${GIT_COMMIT_USER_EMAIL}"
   git config --global user.name "${GIT_COMMIT_USER_NAME}"
 
-  git clone --branch=master https://github.com/${GITHUB_DEST_REPO}.git "${GITHUB_DEST_REPO}"
+  git clone --branch=master https://github.com/${GITHUB_DEST_REPO}.git "${site}"
 
   return 0
 }
@@ -60,7 +60,7 @@ function do_before_script() {
 function do_script() {
 
   echo "The main test code; perform the Jekyll build..."
-  
+
   cd "${slug}"
 
   # Be sure the 'vendor/' folder is excluded, otherwise a strage error occurs.
