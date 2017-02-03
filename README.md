@@ -79,3 +79,4 @@ All web pages are in the `pages` folder.
 ## Timezone
 
 As per `_config.yml`, the default timezone is UTC. For other timezones, set it explicitly as offset (for example +0300)
+
