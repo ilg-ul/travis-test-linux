@@ -18,12 +18,13 @@ set -o nounset # Exit if variable not set.
 IFS=$'\n\t'
 
 # -----------------------------------------------------------------------------
-site="${HOME}/${GITHUB_REPO}.git"
-slug="${HOME}/${TRAVIS_REPO_SLUG}.git"
+site="${HOME}/${GITHUB_REPO}"
+slug="${HOME}/${TRAVIS_REPO_SLUG}"
 
 function do_before_install() {
 
   cd "${HOME}"
+  ls -lL cd "${slug}"
 
   # gem install html-proofer
   # htmlproofer --version
@@ -40,7 +41,7 @@ function do_before_script() {
   git config --global user.email "ilg@livius.net"
   git config --global user.name "Liviu Ionescu (Travis CI)"
 
-  git clone -b master https://github.com/${GITHUB_REPO}.git ${GITHUB_REPO}.git
+  git clone -b master https://github.com/${GITHUB_REPO}.git ${GITHUB_REPO}
 
   return 0
 }
@@ -53,7 +54,7 @@ function do_script() {
   bundle exec jekyll build --destination ${site}
   # bundle exec htmlproofer ${site}
 
-  cd ${site}
+  cd "${site}"
 
   git add --all .
   git commit -m "Deploy to Github Pages"
@@ -61,7 +62,7 @@ function do_script() {
 
   git status
 
-  git push --force --quiet "https://${GITHUB_TOKEN}@$github.com/${GITHUB_REPO}.git" master
+  git push --force --quiet "https://${GITHUB_TOKEN}@$github.com/${GITHUB_REPO}" master
 
   if [ "${TRAVIS_BRANCH}" != "master" ]; then exit 0; fi
 
@@ -79,7 +80,7 @@ function do_after_success() {
 
   git status
 
-  git push --force --quiet "https://${GITHUB_TOKEN}@$github.com/${GITHUB_REPO}.git" master
+  git push --force --quiet "https://${GITHUB_TOKEN}@$github.com/${GITHUB_REPO}" master
 
   return 0
 }
