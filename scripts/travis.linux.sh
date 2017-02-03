@@ -59,9 +59,12 @@ function do_after_success() {
 
   git add .
   git commit -m "Deploy to Github Pages"
+  env
 
-  git push --force --quiet "https://${GITHUB_TOKEN}@$github.com/${GITHUB_REPO}.git" master
+  git status
   
+  git push --force --quiet "https://${GITHUB_TOKEN}@$github.com/${GITHUB_REPO}.git" master
+
   return 0
 }
 
