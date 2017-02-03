@@ -18,12 +18,21 @@ set -o nounset # Exit if variable not set.
 IFS=$'\n\t'
 
 # -----------------------------------------------------------------------------
-site="${HOME}/${GITHUB_REPO}"
-slug="${HOME}/${TRAVIS_REPO_SLUG}"
+
+build="${HOME}/build"
+slug="${build}/${TRAVIS_REPO_SLUG}"
+
+# -----------------------------------------------------------------------------
+
+site="${HOME}/${GITHUB_DEST_REPO}"
+
+# -----------------------------------------------------------------------------
 
 function do_before_install() {
 
   cd "${HOME}"
+  tree
+  ls -lL "${slug}"
 
   # gem install html-proofer
   # htmlproofer --version
@@ -36,12 +45,12 @@ function do_before_install() {
 function do_before_script() {
 
   cd "${HOME}"
-  # ls -lL "${slug}"
+  ls -lL "${slug}"
 
   git config --global user.email "ilg@livius.net"
   git config --global user.name "Liviu Ionescu (Travis CI)"
 
-  git clone -b master https://github.com/${GITHUB_REPO}.git ${GITHUB_REPO}
+  git clone --branch=master https://github.com/${GITHUB_DEST_REPO}.git ${GITHUB_DEST_REPO}
 
   return 0
 }
