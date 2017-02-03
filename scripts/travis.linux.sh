@@ -18,13 +18,13 @@ set -o nounset # Exit if variable not set.
 IFS=$'\n\t'
 
 # -----------------------------------------------------------------------------
-site="${HOME}/ilg-ul/test-jekyll.git"
+site="${HOME}/${GITHUB_REPO}.git"
 
 function do_before_install() {
 
   cd ${HOME}
-  gem install html-proofer
-  htmlproofer --version
+  # gem install html-proofer
+  # htmlproofer --version
 
   # bundle update
 
@@ -34,7 +34,11 @@ function do_before_install() {
 function do_before_script() {
 
   cd ${HOME}
-  git clone https://github.com/ilg-ul/test-jekyll.git ilg-ul/test-jekyll.git
+
+  git config --global user.email "ilg@livius.net"
+  git config --global user.name "Liviu Ionescu (Travis CI)"
+
+  git clone -b master https://github.com/ilg-ul/travis-test-jekyll.git ilg-ul/travis-test-jekyll.git
 
   return 0
 }
@@ -51,6 +55,13 @@ function do_script() {
 
 function do_after_success() {
 
+  cd ${site}
+
+  git add .
+  git commit -m "Deploy to Github Pages"
+
+  git push --force --quiet "https://${GITHUB_TOKEN}@$github.com/${GITHUB_REPO}.git" master
+  
   return 0
 }
 
