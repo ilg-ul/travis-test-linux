@@ -70,11 +70,10 @@ function do_script() {
 
   git add --all .
   git commit -m "Deploy to Github Pages"
-  env
 
   git status
 
-  git push --force --quiet "https://${GITHUB_TOKEN}@$github.com/${GITHUB_DEST_REPO}" master
+  git push --force --quiet "https://${GITHUB_TOKEN}@github.com/${GITHUB_DEST_REPO}" master
 
   if [ "${TRAVIS_BRANCH}" != "master" ]; then exit 0; fi
 
