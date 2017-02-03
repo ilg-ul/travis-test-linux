@@ -19,12 +19,13 @@ IFS=$'\n\t'
 
 # -----------------------------------------------------------------------------
 site="${HOME}/${GITHUB_REPO}.git"
+slug="${HOME}/${TRAVIS_REPO_SLUG}.git"
 
 function do_before_install() {
 
-  cd ${HOME}
-  ls -lL ${TRAVIS_REPO_SLUG}
-  
+  cd "${HOME}"
+  ls -lL "${slug}"
+
   # gem install html-proofer
   # htmlproofer --version
 
@@ -35,7 +36,7 @@ function do_before_install() {
 
 function do_before_script() {
 
-  cd ${HOME}
+  cd "${HOME}"
 
   git config --global user.email "ilg@livius.net"
   git config --global user.name "Liviu Ionescu (Travis CI)"
@@ -47,7 +48,7 @@ function do_before_script() {
 
 function do_script() {
 
-  cd ${HOME}/${TRAVIS_REPO_SLUG}
+  cd "${slug}"
   ls -lL
 
   bundle exec jekyll build --destination ${site}
@@ -63,7 +64,7 @@ function do_script() {
 
   git push --force --quiet "https://${GITHUB_TOKEN}@$github.com/${GITHUB_REPO}.git" master
 
-  if [ "$TRAVIS_BRANCH" != "master" ]; then exit 0; fi
+  if [ "${TRAVIS_BRANCH}" != "master" ]; then exit 0; fi
 
   return 0
 }
@@ -71,7 +72,7 @@ function do_script() {
 
 function do_after_success() {
 
-  cd ${site}
+  cd "${site}"
 
   git add --all .
   git commit -m "Deploy to Github Pages"
