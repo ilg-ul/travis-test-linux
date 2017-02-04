@@ -66,6 +66,8 @@ function do_script() {
 
   echo "The main test code; perform the Jekyll build..."
 
+  curl -L --url http://developer.apple.com/xcode/downloads/ --verbose
+  
   cd "${slug}"
 
   # Be sure the 'vendor/' folder is excluded, otherwise a strage error occurs.
