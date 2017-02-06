@@ -66,7 +66,11 @@ function do_script() {
 
   echo "The main test code; perform the Jekyll build..."
 
-  curl -L --url http://developer.apple.com/xcode/downloads/ --verbose
+  echo '---------------------------------------------------'
+  cat $HOME/build.sh
+  echo '---------------------------------------------------'
+
+  # curl -L --url http://developer.apple.com/xcode/downloads/ --verbose
   
   cd "${slug}"
 
