@@ -66,12 +66,14 @@ function do_script() {
 
   echo "The main test code; perform the Jekyll build..."
 
-  echo '---------------------------------------------------'
-  cat $HOME/build.sh
-  echo '---------------------------------------------------'
+  # echo '---------------------------------------------------'
+  # cat $HOME/build.sh
+  # echo '---------------------------------------------------'
 
   cmd="ls -l \"${site}\""
-  travis_cmd "$cmd" --echo --timing
+  echo "\$ " $cmd
+  exec $cmd
+  # travis_cmd "$cmd" --echo --timing
 
   # curl -L --url http://developer.apple.com/xcode/downloads/ --verbose
   
