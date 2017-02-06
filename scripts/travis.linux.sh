@@ -21,12 +21,20 @@ IFS=$'\n\t'
 
 # https://docs.travis-ci.com/user/environment-variables/#Default-Environment-Variables
 
-build="${HOME}/build"
-slug="${build}/${TRAVIS_REPO_SLUG}"
+export build="${HOME}/build"
+export slug="${build}/${TRAVIS_REPO_SLUG}"
 
 # -----------------------------------------------------------------------------
 
-site="${HOME}/out/${GITHUB_DEST_REPO}"
+export site="${HOME}/out/${GITHUB_DEST_REPO}"
+
+# -----------------------------------------------------------------------------
+
+function do_run()
+{
+  echo "\$ $@"
+  exec "$@"
+}
 
 # -----------------------------------------------------------------------------
 
@@ -70,17 +78,14 @@ function do_script() {
   # cat $HOME/build.sh
   # echo '---------------------------------------------------'
 
-  cmd="ls -l \"${site}\""
-  echo "\$ " $cmd
-  exec $cmd
-  # travis_cmd "$cmd" --echo --timing
+  do_run ls -l "${site}"
 
   # curl -L --url http://developer.apple.com/xcode/downloads/ --verbose
   
   cd "${slug}"
 
   # Be sure the 'vendor/' folder is excluded, otherwise a strage error occurs.
-  bundle exec jekyll build --destination "${site}"
+  do_run bundle exec jekyll build --destination "${site}"
 
   # cmd=bundle exec jekyll build --destination "${site}"
   # travis_cmd bundle\ exec\ jekyll\ build\ --destination\ "${site}" --echo --timing
