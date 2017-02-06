@@ -80,6 +80,9 @@ function do_script() {
 
   do_run ls -l "${site}"
 
+  mkdir "a b"
+  do_run ls -l "a b"
+
   # curl -L --url http://developer.apple.com/xcode/downloads/ --verbose
   
   cd "${slug}"
