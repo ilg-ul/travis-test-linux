@@ -39,6 +39,23 @@ module Jekyll
             relative_path_from_git_dir
           )[/\d+/]
           
+          p "last_modified_at_unix " << [
+            'git',
+            '--git-dir',
+            top_level_git_directory,
+            'log',
+            '--format="%ct"',
+            '--',
+            relative_path_from_git_dir].to_s
+          p "last_modified_at_unix " << Executor.sh(
+            'git',
+            '--git-dir',
+            top_level_git_directory,
+            'log',
+            '--format="%ct"',
+            '--',
+            relative_path_from_git_dir
+          )
           p "last_modified_at_unix " << last_commit_date
 
           # last_commit_date can be nil iff the file was not committed.
