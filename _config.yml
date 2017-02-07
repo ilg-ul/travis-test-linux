@@ -8,15 +8,19 @@ description: The eXtensible Component Definition Language framework
 email: il@livius.net
 
 destination: _site
+
 exclude:
   - README.md
   - '*.command'
-  - localhost-4002.webloc
+  - '*.webloc'
+  - Gemfile
+  - Gemfile.lock
+  - params.json
   - vendor
   - scripts
 
 # Used in sitemap.xml.
-url: "http://ilg-ul.github.io" # the base hostname & protocol for your site.
+# url: "http://ilg-ul.github.io" # the base hostname & protocol for your site.
 
 # The subpath of your site, e.g. /blog (note the leading slash and the
 # absence of a trailing slash).
@@ -63,8 +67,8 @@ gems:
 
 # References to the project associated with the web.
 github-username:  ilg-ul
-github-project-name: xcdl/xcdl-go
-github-project-url: http://github.com/xcdl/xcdl-go
+github-project-name: ilg-ul/travis-test-linux
+github-project-url: http://github.com/ilg-ul/travis-test-linux
 
 # Change it to refer to project's page
 # facebook-url: https://facebook.com/ilg-ul/
@@ -72,7 +76,7 @@ github-project-url: http://github.com/xcdl/xcdl-go
 # twitter-url: http://twitter.com/ilegeul
 
 # If you have one, define it here.
-google-analytics-id: UA-16767008-13
+google-analytics-id: xUA-16767008-13
 
 # Disable it if no site footer is needed.
 # custom-footer-content: content/site-custom-footer.markdown
@@ -85,4 +89,4 @@ useExistingAnchors: true
 css-date: 201510121951
 
 # Content copyright. Update it to your needs.
-copyright-message: "© 2016 Liviu Ionescu"
+copyright-message: "© 2017 Liviu Ionescu"

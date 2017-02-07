@@ -33,7 +33,7 @@ export site="${HOME}/out/${GITHUB_DEST_REPO}"
 function do_run()
 {
   echo "\$ $@"
-  $@
+  "$@""
 }
 
 # -----------------------------------------------------------------------------
@@ -61,10 +61,10 @@ function do_before_script() {
 
   cd "${HOME}"
 
-  git config --global user.email "${GIT_COMMIT_USER_EMAIL}"
-  git config --global user.name "${GIT_COMMIT_USER_NAME}"
+  do_run git config --global user.email "${GIT_COMMIT_USER_EMAIL}"
+  do_run git config --global user.name "${GIT_COMMIT_USER_NAME}"
 
-  git clone --branch=master https://github.com/${GITHUB_DEST_REPO}.git "${site}"
+  do_run git clone --branch=master https://github.com/${GITHUB_DEST_REPO}.git "${site}"
 
   return 0
 }
@@ -115,15 +115,19 @@ function do_script() {
     exit 0
   fi
 
-  git add --all .
-  git commit -m "Travis CI Deploy of ${TRAVIS_COMMIT}" 
+  do_run git diff
+  do_run git add --all .
+  do_run git commit -m "Travis CI Deploy of ${TRAVIS_COMMIT}" 
+
+  # Skip deployment
+  return 0
 
   # git status
 
   echo "Deploy to GitHub pages..."
 
   # Must be quiet and have no output, to not reveal the key.
-  git push --force --quiet "https://${GITHUB_TOKEN}@github.com/${GITHUB_DEST_REPO}" master > /dev/null 2>&1
+  do_run git push --force --quiet "https://${GITHUB_TOKEN}@github.com/${GITHUB_DEST_REPO}" master > /dev/null 2>&1
 
   return 0
 }
