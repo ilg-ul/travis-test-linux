@@ -52,6 +52,14 @@ module Jekyll
             '--git-dir',
             top_level_git_directory,
             'log',
+            '--',
+            relative_path_from_git_dir
+          )
+          p "last_modified_at_unix " << Executor.sh(
+            'git',
+            '--git-dir',
+            top_level_git_directory,
+            'log',
             '--format="%ct"',
             '--',
             relative_path_from_git_dir
