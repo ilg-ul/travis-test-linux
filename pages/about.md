@@ -4,7 +4,8 @@ permalink: /about/
 title: About
 author: Liviu Ionescu
 
-last_modified_at: 2015-09-30 17:13:00 +00:00
+date: 2015-09-30 17:13:00 +0000
+
 ---
 
 ## About this site

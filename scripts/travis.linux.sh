@@ -78,20 +78,15 @@ function do_script() {
   # cat $HOME/build.sh
   # echo '---------------------------------------------------'
 
-  do_run ls -l "${site}"
+  # mkdir "a b"
+  # do_run ls -l "a b"
 
-  mkdir "a b"
-  do_run ls -l "a b"
-
-  # curl -L --url http://developer.apple.com/xcode/downloads/ --verbose
-  
   cd "${slug}"
 
   # Be sure the 'vendor/' folder is excluded, otherwise a strage error occurs.
   do_run bundle exec jekyll build --destination "${site}"
 
-  # cmd=bundle exec jekyll build --destination "${site}"
-  # travis_cmd bundle\ exec\ jekyll\ build\ --destination\ "${site}" --echo --timing
+  do_run ls -l "${site}"
   
   # bundle exec htmlproofer "${site}"
 
