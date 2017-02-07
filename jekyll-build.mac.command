@@ -8,7 +8,7 @@ site="../travis-test-jekyll.git"
 
 # Be sure the 'vendor/' folder is excluded, 
 # otherwise a strage error occurs.
-bundle exec jekyll build --destination "${site}"
+bundle exec jekyll build --destination "${site}" --verbose
 
 export NOKOGIRI_USE_SYSTEM_LIBRARIES=true
 
