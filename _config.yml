@@ -1,26 +1,24 @@
 # Site settings.
 
 # Without a clear rule enforced, both title and name are used.
-title: XCDL / xPack
-name: XCDL / xPack
-description: The eXtensible Component Definition Language framework
+title: xPack / XCDL
+name: xPack / XCDL
+description: The xPack eXtensible Component Definition Language framework
 
 email: il@livius.net
 
 destination: _site
 
+# 'vendor' appears in Travis
 exclude:
   - README.md
+  - .github
   - '*.command'
   - '*.webloc'
   - Gemfile
   - Gemfile.lock
-  - params.json
   - vendor
   - scripts
-
-# Used in sitemap.xml.
-# url: "http://ilg-ul.github.io" # the base hostname & protocol for your site.
 
 # The subpath of your site, e.g. /blog (note the leading slash and the
 # absence of a trailing slash).

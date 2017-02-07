@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/ilg-ul/travis-test-linux.svg?branch=master)](https://travis-ci.org/ilg-ul/travis-test-linux) 
+[![Build Status](https://travis-ci.org/ilg-ul/travis-test-linux.svg?branch=master)](https://travis-ci.org/ilg-ul/travis-test-linux)
 
 # The XCDL Web Site source
 
@@ -79,4 +79,3 @@ All web pages are in the `pages` folder.
 ## Timezone
 
 As per `_config.yml`, the default timezone is UTC. For other timezones, set it explicitly as offset (for example +0300)
-

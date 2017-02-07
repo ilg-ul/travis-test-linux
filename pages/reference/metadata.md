@@ -46,7 +46,7 @@ Define a single configuration option.
 
 The `<option>` object is the basic unit of configurability. Generally each option corresponds to a single user choice. Typically there is a certain amount of information associated with an option to assist the user in manipulating that option, for example a textual description. There will also be some limits on the possible values that the user can choose, so an option may be a simple yes-or-no choice or it may be something more complicated such as an array size or a device name. Options may have associated constraints, so if that option is enabled then certain conditions have to satisfied elsewhere in the configuration. Options usually have direct consequences such as preprocessor `#define` symbols in a configuration header file.
 
-`<option>` is defined as a XML element that has one name attribute and a body. Within a single configuration, names must be unique. If a configuration contained two packages which defined the same entity, any references to that entity in a `<requires>` property or any other expression would be ambiguous. It is possible for a given name to be used by two different packages if those packages should never be loaded into a single configuration. For example, architectural HAL packages are allowed to reuse names because a single configuration cannot target two different architectures. For a recommended naming convention see the Section called Package Contents and Layout in [XCDL packages](/XCDL_packages).
+`<option>` is defined as a XML element that has one name attribute and a body. Within a single configuration, names must be unique. If a configuration contained two packages which defined the same entity, any references to that entity in a `<requires>` property or any other expression would be ambiguous. It is possible for a given name to be used by two different packages if those packages should never be loaded into a single configuration. For example, architectural HAL packages are allowed to reuse names because a single configuration cannot target two different architectures. For a recommended naming convention see the Section called Package Contents and Layout in [XCDL packages]({{ site.baseurl }}/guide/packages).
 
 The user choice is expressed during the configuration process and is reflected in the enabled/disabled statues of the option. For options with associated values, it is also possible for the user to define a value (if missing, a default value, either implicit or defined as the property `<defaultValue>`, is applied). For these options it is also possible to define some limits on the possible values that the user can choose.
 
@@ -117,7 +117,7 @@ Define a component, a collection of configuration objects.
 
 The `<component>` object is a configuration element that can contain additional options and subcomponents. A `<component>` can have the same properties as an `<option>`. There is an additional property, `<includeXcdl>` which allows configuration data to be split into multiple files, included below the current object in the configuration hierarchy.
 
-The `<component>` object is implemented as a XML element that has one name attribute and a body. Within a single configuration, names must be unique. If a configuration contained two packages which defined the same entity, any references to that entity in a `<requires>` property or any other expression would be ambiguous. It is possible for a given name to be used by two different packages if those packages should never be loaded into a single configuration. For example, architectural HAL packages are allowed to reuse certain names because a single configuration cannot target two different architectures. For a recommended naming convention see the Section called Package Contents and Layout in [XCDL packages](/XCDL_packages).
+The `<component>` object is implemented as a XML element that has one name attribute and a body. Within a single configuration, names must be unique. If a configuration contained two packages which defined the same entity, any references to that entity in a `<requires>` property or any other expression would be ambiguous. It is possible for a given name to be used by two different packages if those packages should never be loaded into a single configuration. For example, architectural HAL packages are allowed to reuse certain names because a single configuration cannot target two different architectures. For a recommended naming convention see the Section called Package Contents and Layout in [XCDL packages]({{ site.baseurl }}/guide/packages).
 
 Similarly to `<option>` objects, if active and enabled, `<component>` objects can generate preprocessor `#define` lines in a configuration header file, and decide if a set of source files are included in the build process.
 
@@ -353,7 +353,7 @@ The interface *kernel/scheduler* is implemented by both the mlqueue and bitmap s
 
 Some component writers may prefer to use the first `<requires>` constraint on the grounds that the code will only have been tested with the mlqueue and bitmap schedulers and cannot be guaranteed to work with any new schedulers. Other component writers may take a more optimistic view and assume that their code will work with any scheduler until proven otherwise.
 
-`<interface>` is defined a XML element that has one name attribute and a body. Within a single configuration, names must be unique. If a configuration contained two packages which defined the same entity, any references to that entity in a `<requires>` property or any other expression would be ambiguous. It is possible for a given name to be used by two different packages if those packages should never be loaded into a single configuration. For example, architectural HAL packages are allowed to reuse names because a single configuration cannot target two different architectures. For a recommended naming convention see the Section called Package Contents and Layout in [XCDL packages](/XCDL_packages).
+`<interface>` is defined a XML element that has one name attribute and a body. Within a single configuration, names must be unique. If a configuration contained two packages which defined the same entity, any references to that entity in a `<requires>` property or any other expression would be ambiguous. It is possible for a given name to be used by two different packages if those packages should never be loaded into a single configuration. For example, architectural HAL packages are allowed to reuse names because a single configuration cannot target two different architectures. For a recommended naming convention see the Section called Package Contents and Layout in [XCDL packages]({{ site.baseurl }}/guide/packages).
 
 A commonly used constraint on interface values takes the form:
 
@@ -534,7 +534,7 @@ In some cases the hierarchy does not provide sufficient control over whether or 
 
 Another common use of `<activeIf>` properties is to avoid excessive nesting in the configuration hierarchy. If some option B is only relevant if option A is enabled, it is possible to turn A into a component that contains B. However adding another level to the hierarchy for a component which will contain just one entry may be considered excessive. In such cases it is possible for B to have an `<activeIf>` dependency on A.
 
-`<activeIf>` takes a list of goal expressions as argument and all of the conditions have to be satisfied for the object to be active. For details of goal expression syntax see see the Section called Goal Expressions in [XCDL packages](/XCDL_packages). In most cases the goal expressions will be very simple, often involving just one other object, but more complicated expressions can be used when appropriate.
+`<activeIf>` takes a list of goal expressions as argument and all of the conditions have to be satisfied for the object to be active. For details of goal expression syntax see see the Section called Goal Expressions in [XCDL packages]({{ site.baseurl }}/guide/packages). In most cases the goal expressions will be very simple, often involving just one other object, but more complicated expressions can be used when appropriate.
 
 The `<activeIf>` and `<requires>` properties have certain similarities, but they serve a different purpose. Suppose there are two options A and B, and option B relies on functionality provided by A. This could be expressed as either *B activeIf A* or as *B requires A*. The points to note are:
 
@@ -696,7 +696,7 @@ If missing, no computed value is used.
 
 ### Description
 
-In some cases it is useful to have a configuration option whose value cannot be modified directly by the user. This can be achieved using a `<computed>` property, which takes an XCDL expression as argument (see the Section called Ordinary Expressions in [XCDL packages](/XCDL_packages) for a description of expression syntax). The configuration system evaluates the expression whenever needed to generate the header line or when referred from another expression. The result depends on the object’s `<valueType>`:
+In some cases it is useful to have a configuration option whose value cannot be modified directly by the user. This can be achieved using a `<computed>` property, which takes an XCDL expression as argument (see the Section called Ordinary Expressions in [XCDL packages]({{ site.baseurl }}/guide/packages) for a description of expression syntax). The configuration system evaluates the expression whenever needed to generate the header line or when referred from another expression. The result depends on the object’s `<valueType>`:
 
  -   `<valueType>none</valueType>` - objects with this type have no value, so the computed property is not applicable
  -   `<valueType>bool</valueType>` - the expression should evaluate to a boolean value
@@ -841,7 +841,7 @@ If missing the default object value depends on the object state, active objects 
 
 The `<defaultValue>` property usually allows to define the default value for the object, in case no other value is set during configuration.
 
-The arguments to the `<defaultValue>` property should be an XCDL expression, see the Section called Ordinary Expressions in [XCDL packages](/XCDL_packages) for the syntactic details. In many cases a simple constant value will suffice.
+The arguments to the `<defaultValue>` property should be an XCDL expression, see the Section called Ordinary Expressions in [XCDL packages]({{ site.baseurl }}/guide/packages) for the syntactic details. In many cases a simple constant value will suffice.
 
 However it is also possible for an object’s default value to depend on other objects. For example the common HAL package provides some support functions that are needed by the kernel, but are unlikely to be useful if the kernel is not being used.
 
@@ -899,7 +899,7 @@ In order for a header definition to be generated, the full path of the include f
 
 The name must be a valid C/C++ preprocessor identifier: a sequence of upper or lower case letters, digits or underscores, starting with a non-digit character; identifiers beginning with an underscore should normally be avoided because they may clash with system packages or with identifiers reserved for use by the compiler.
 
-Within a single configuration, names must be unique. If a configuration contained two packages which defined the same entity `OS_INTEGER_SOME_OPTION`, any references to that entity in a `<requires>` property or any other expression would be ambiguous. It is possible for a given name to be used by two different packages if those packages should never be loaded into a single configuration. For example, architectural HAL packages are allowed to reuse certain names because a single configuration cannot target two different architectures. For a recommended naming convention see the Section called Package Contents and Layout in [XCDL packages](/XCDL_packages).
+Within a single configuration, names must be unique. If a configuration contained two packages which defined the same entity `OS_INTEGER_SOME_OPTION`, any references to that entity in a `<requires>` property or any other expression would be ambiguous. It is possible for a given name to be used by two different packages if those packages should never be loaded into a single configuration. For example, architectural HAL packages are allowed to reuse certain names because a single configuration cannot target two different architectures. For a recommended naming convention see the Section called Package Contents and Layout in [XCDL packages]({{ site.baseurl }}/guide/packages).
 
 For active and enabled objects, if the `<generatedDefinition>` property is defined, a line with the following structure will be generated in the file pointed by the `<generatedFile>` property:
 
@@ -1090,7 +1090,7 @@ If missing, no value based constraints are imposed.
 
 ### Description
 
-Options with the number or string valueType can have an arbitrary sequence of characters as their data. In nearly all cases some restrictions have to be imposed, for example the data should correspond to a number within a certain range, or it should be one of a small number of constants. The legalValues property can be used to impose such constraints. The arguments to the property should be an XCDL list expression, see the Section called List Expressions in [XCDL packages](/XCDL_packages) for the syntactic details. Common examples include:
+Options with the number or string valueType can have an arbitrary sequence of characters as their data. In nearly all cases some restrictions have to be imposed, for example the data should correspond to a number within a certain range, or it should be one of a small number of constants. The legalValues property can be used to impose such constraints. The arguments to the property should be an XCDL list expression, see the Section called List Expressions in [XCDL packages]({{ site.baseurl }}/guide/packages) for the syntactic details. Common examples include:
 
     <legalValues>0 to 0x7fff</legalValues>
     <legalValues>9600, 19200, 38400</legalValues>
@@ -1223,7 +1223,7 @@ If missing, no additional requirements will be enforced/checked.
 
 Configuration objects are not independent. For example the C library can provide thread-safe implementations of certain functions, but only if the kernel is present, if the kernel provides multi-threading, and if the kernel options related to per-thread data are enabled. It is possible to express such constraints using `<requires>` properties.
 
-The arguments to a `<requires>` property should constitute a list of goal expressions, as described in the Section called List Expressions in [XCDL packages](/XCDL_packages). Most goal expressions are relatively simple because the constraints being described are simple, but complicated expressions can be used when necessary. If the object is active and enabled then all these constraints should be satisfied, and any goal expressions which evaluate to 0/false will result in conflicts being raised. It is possible for users to ignore such conflicts and attempt to build the current configuration anyway, but there is no guarantee that anything will work. If an object is inactive or disabled then its `<requires>` constraints will be ignored.
+The arguments to a `<requires>` property should constitute a list of goal expressions, as described in the Section called List Expressions in [XCDL packages]({{ site.baseurl }}/guide/packages). Most goal expressions are relatively simple because the constraints being described are simple, but complicated expressions can be used when necessary. If the object is active and enabled then all these constraints should be satisfied, and any goal expressions which evaluate to 0/false will result in conflicts being raised. It is possible for users to ignore such conflicts and attempt to build the current configuration anyway, but there is no guarantee that anything will work. If an object is inactive or disabled then its `<requires>` constraints will be ignored.
 
 The configuration system contains an inference engine which can resolve many types of conflicts automatically. For example, if option A is enabled and requires an option B that is currently disabled then the inference engine may attempt to resolve the conflict by enabling B. However this will not always be possible, for example there may be other constraints in the configuration which force B to be disabled at present, in which case user intervention is required.
 
@@ -1273,7 +1273,7 @@ If missing, no source files will be added to the build.
 
 The `<sourceFile>` property allows component developers to specify source files which should be compiled.
 
-Details of the build process including such issues as compiler flags and the order in which things happen can be found in [The build process](/The_build_process).
+Details of the build process including such issues as compiler flags and the order in which things happen can be found in [The build process]({{ site.baseurl }}/guide/build-process/).
 
 The `<sourceFile>` properties can occur in any of `<option>`, `<component>`, `<package>` or `<interface>` objects. A `<sourceFile>` property has effect if and only if the object that contains it is active and enabled. Typically the body of a package will define any source files that need to be built irrespective of individual options, and each component, option, and interface will define source files that are more specific. The `<sourceFile>` property can list any number of source files. It is possible for a given source file to be specified in `<sourceFile>` properties for several different objects, in which case the source file will get built if any of these objects are active and enabled.
 

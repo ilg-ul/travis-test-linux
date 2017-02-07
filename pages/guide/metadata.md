@@ -152,7 +152,7 @@ Because different properties serve very different purposes, their syntax is not 
 
 Many of the properties can be used in any of `<package>`, `<component>`, `<option>` or `<interface>`. Other properties are more specific. The `<includeFile>` property is only relevant to `<component>` objects. The `<generatedFile>`, `<hardware>` properties apply to a package as a whole, so can only occur in the body of a `<package>` object. The `<computed>`, `<defaultValue>`, `<legalValues>` and `<valueType>` properties are not relevant to packages, as will be explained later. The `<computed>` and `<defaultValue>` properties are also not relevant to interfaces.
 
-This section lists the various properties, grouped by purpose. Each property also has a full reference page in [The XCDL language specification](/The_XCDL_language_specification "wikilink"). Properties related to values and expressions are described in more detail in the Section called Values and Expressions. Properties related to header file generation and to the build process are described in [The build process](/The_build_process "wikilink").
+This section lists the various properties, grouped by purpose. Each property also has a full reference page in [The XCDL language specification]({{ site.baseurl }}/guide/metadata/). Properties related to values and expressions are described in more detail in the Section called Values and Expressions. Properties related to header file generation and to the build process are described in [The build process]({{ site.baseurl }}/guide/build-process/).
 
 ### Information-providing properties
 
@@ -369,7 +369,7 @@ Some packages may have more complicated build requirements, for example they may
 
 (not implemented)
 
-For full details of custom build steps and the build process generally, see [The build process](/The_build_process "wikilink").
+For full details of custom build steps and the build process generally, see [The build process]({{ site.baseurl }}/guide/build-process/).
 
 The `<generatedFile>` property relates to an object’s exported header files. To avoid any mistakes, this property must be explicitly defined:
 

@@ -1,9 +1,12 @@
+# Travis CI configuration file to validate and possibly deploy 
+# the xPack/XCDL Jekyll site.
+
+# To skip a CI build, add [skip ci] anywhere in the commit message.
+
+# Use the new Debian 14 containers.
 dist: trusty
 sudo: false
 
-# language: c++
-
-# 2.3.1 
 language: ruby
 rvm:
   - 2.3.1
@@ -13,7 +16,16 @@ env:
     - GITHUB_DEST_REPO="ilg-ul/travis-test-jekyll"
     - GIT_COMMIT_USER_EMAIL="ilg@livius.net"
     - GIT_COMMIT_USER_NAME="Travis CI"
+    - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+    # The secure token is 'GITHUB_TOKEN=...' and was generated with:
+    # $ travis encrypt -r ilg-ul/travis-test-jekyll GITHUB_TOKEN=...
     - secure: "X6IA/caLY/9sEz7hKX8uNtQUZbMlgJRG2LtkGOV1IYcDxpya72YJhLL0pyd5/TadooGbSVBN1uoUFNsd1gmXggIUudX2SkgzuBh49iV1nxgNHu5tZUaqJfYL44l4SwDVVfnTgtk5/I+Md8EMCjrQVK0iD42fxAaRgUk1OeK8fr4PWQppyLHfsSK5r6aqEMVqR9JumoD+X14fxhKKjyTwNijUToOxwfYffVGbTxPQw53RDqqUCQ+Fk14rqrI20N3I7jnPd3DEsuHQtGLNpkAIKv6665TZqUAbG8bK8EhZ1YjXuaPsQxN/OTiWTneOj/Gna76BM6txxmoI+OMiMNeLSjWewfwhQBpEAK+ftEkdIghhrUyQWNdlRntv2DUesZVlRVvSh1lWUg9Jd02u/mHhAFhNyLkg8s0GJO/A8whoeMM9aPSAckAgRxoas2Rb0lh2TnQ7LA+PGzauP9RK96c3YNV5cp7LulE5QS6JHkAtKMnoVyrxSykRF+WKVSWxbPFqyncs/G/VohNaQc59+sg7JHkSuX7QpnZaUgcitJRQs41aHRuIjrpPPgnXKT4ecjkcLJmOTQ3qBmHFPwYWKb/tAvtIMeGlbLk3sx1x1SS/l4TnmatpX5PC/djMKwqMxXj6/aMUxjoJQ0EErq2NiiMBy4IeeZMFyOW2R7w14eSSFCY="
+
+# Install dependencies.
+# addons:
+#  apt:
+#    packages:
+#      - ...
 
 before_install:
   - bash scripts/travis.linux.sh before_install
@@ -24,11 +36,14 @@ before_script:
 script:
   - bash scripts/travis.linux.sh script
 
-after_success:
-  - bash scripts/travis.linux.sh after_success
+# -----------------------------------------------------------------------------
+# Unused.
 
-after_failure:
-  - bash scripts/travis.linux.sh after_failure
+# after_success:
+#  - bash scripts/travis.linux.sh after_success
+
+# after_failure:
+#  - bash scripts/travis.linux.sh after_failure
 
 # Deploy via script not functional (or not understood).
 # deploy:
@@ -37,6 +52,5 @@ after_failure:
 #  on:
 #    branch: master
   
-after_script:
-  - bash scripts/travis.linux.sh after_script
-  
+# after_script:
+#  - bash scripts/travis.linux.sh after_script

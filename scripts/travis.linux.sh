@@ -48,8 +48,8 @@ function do_before_install() {
 
   cd "${HOME}"
 
-  # gem install html-proofer
-  # htmlproofer --version
+  do_run gem install html-proofer
+  do_run htmlproofer --version
 
   return 0
 }
@@ -74,21 +74,18 @@ function do_script() {
 
   echo "The main test code; perform the Jekyll build..."
 
-  # echo '---------------------------------------------------'
-  # cat $HOME/build.sh
-  # echo '---------------------------------------------------'
-
-  # mkdir "a b"
-  # do_run ls -l "a b"
-
   cd "${slug}"
 
-  # Be sure the 'vendor/' folder is excluded, otherwise a strage error occurs.
+  # Be sure the 'vendor/' folder is excluded, 
+  # otherwise a strage error occurs.
   do_run bundle exec jekyll build --destination "${site}"
 
-  do_run ls -l "${site}"
-  
-  # bundle exec htmlproofer "${site}"
+  do_run ls -lL "${site}"
+
+  # Validate images and links (internal & external).
+  do_run bundle exec htmlproofer \
+  --url-ignore="https://jekyllrb.com,https://www.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/" \
+  "${site}"
 
   # ---------------------------------------------------------------------------
   # The deployment code is present here not in after_success, 
@@ -96,7 +93,7 @@ function do_script() {
 
   cd "${site}"
 
-  if [ "${TRAVIS_BRANCH}" != "master" ]; 
+  if [ "${TRAVIS_BRANCH}" != "master" ]
   then 
     echo "Not on master branch, skip deploy."
     return 0; 
@@ -111,13 +108,15 @@ function do_script() {
   fi
 
   do_run git diff
+
   do_run git add --all .
   do_run git commit -m "Travis CI Deploy of ${TRAVIS_COMMIT}" 
-
-  # Skip deployment
-  return 0
-
+ 
   # git status
+
+  # Temporarily disable deployment, due to 
+  # - inconsistent results from jekyll-last-modified-at.
+  return 0
 
   echo "Deploy to GitHub pages..."
 
