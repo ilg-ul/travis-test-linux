@@ -48,14 +48,14 @@ function do_before_install() {
 
   cd "${HOME}"
 
-  do_run gem install html-proofer
-  do_run htmlproofer --version
+  # do_run gem install html-proofer
+  # do_run htmlproofer --version
 
   do_run doxygen --version
 
-  do_run sudo add-apt-repository ppa:clearpath-robotics/docs
-  do_run sudo apt-get update
-  do_run sudo apt-get doxygen
+  do_run sudo add-apt-repository -y ppa:clearpath-robotics/docs
+  do_run sudo apt-get -y update
+  do_run sudo apt-get -y doxygen
 
   do_run doxygen --version
   return 0
@@ -90,9 +90,9 @@ function do_script() {
   do_run ls -lL "${site}"
 
   # Validate images and links (internal & external).
-  do_run bundle exec htmlproofer \
-  --url-ignore="https://jekyllrb.com,https://www.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/" \
-  "${site}"
+  # do_run bundle exec htmlproofer \
+  # --url-ignore="https://jekyllrb.com,https://www.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/" \
+  # "${site}"
 
   # ---------------------------------------------------------------------------
   # The deployment code is present here not in after_success, 
