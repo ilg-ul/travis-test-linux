@@ -52,6 +52,12 @@ function do_before_install() {
   do_run htmlproofer --version
 
   do_run doxygen --version
+
+  do_run sudo add-apt-repository ppa:clearpath-robotics/docs
+  do_run sudo apt-get update
+  do_run sudo apt-get doxygen
+
+  do_run doxygen --version
   return 0
 }
 
