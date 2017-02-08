@@ -61,7 +61,7 @@ function do_before_install() {
 
   do_run curl -L https://launchpad.net/ubuntu/+archive/primary/+files/doxygen-dbg_1.8.11-3_amd64.deb -o ${HOME}/downloads/doxygen-dbg_1.8.11-3_amd64.deb
 
-  do_run apt-get remove doxygen
+  do_run sudo apt-get remove doxygen
   do_run sudo dpkg -i ${HOME}/downloads/doxygen-dbg_1.8.11-3_amd64.deb
 
   do_run doxygen --version
