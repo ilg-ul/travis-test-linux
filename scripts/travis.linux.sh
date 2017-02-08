@@ -92,7 +92,7 @@ function do_before_script() {
   do_run git clone --branch=master https://github.com/${GITHUB_DEST_REPO}.git "${site}"
 
   # Bring in the µOS++ sources, for the Doxygen input.
-  do_run git clone --branch=xpack https://github.com/${GITHUB_DOXY_REPO_1}.git "${doxy}"
+  do_run git clone --branch=xpack https://github.com/${GITHUB_DOXY_REPO}.git "${doxy}"
 
   return 0
 }
