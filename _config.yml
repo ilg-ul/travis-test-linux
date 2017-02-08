@@ -54,6 +54,7 @@ latest-news-pages: 4
 
 # jekyll-last-modified-at is not available on GitHub Pages.
 gems:
+  - jekyll-last-modified-at
   - jekyll-mentions
   - jemoji
   - jekyll-redirect-from
