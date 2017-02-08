@@ -46,6 +46,8 @@ function do_before_install() {
 
   echo "Before install, bring extra tools..."
 
+  do_run cat /etc/apt/sources.list
+  
   cd "${HOME}"
 
   # do_run gem install html-proofer
@@ -56,6 +58,8 @@ function do_before_install() {
   # do_run sudo add-apt-repository -y ppa:clearpath-robotics/docs
   # do_run sudo apt-get -y -q update
   # do_run sudo apt-get -y install doxygen
+
+  do_run sudo apt-get -y install -t trusty-backports libclang1-3.8
 
   mkdir -p ${HOME}/downloads
 
