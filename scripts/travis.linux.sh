@@ -51,11 +51,17 @@ function do_before_install() {
   # do_run gem install html-proofer
   # do_run htmlproofer --version
 
-  do_run doxygen --version
+  # do_run doxygen --version
 
   do_run sudo add-apt-repository -y ppa:clearpath-robotics/docs
   do_run sudo apt-get -y -q update
   do_run sudo apt-get -y install doxygen
+
+  mkdir -p ${HOME}/downloads
+
+  do_run curl -L https://launchpad.net/ubuntu/+archive/primary/+files/doxygen-dbg_1.8.11-3_amd64.deb -o ${HOME}/downloads/doxygen-dbg_1.8.11-3_amd64.deb
+
+  do_run sudo dpkg -i ${HOME}/downloads/doxygen-dbg_1.8.11-3_amd64.deb
 
   do_run doxygen --version
   return 0
