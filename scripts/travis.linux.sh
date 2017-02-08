@@ -53,7 +53,7 @@ function do_before_install() {
 
   do_run doxygen --version
 
-  do_run sudo add-apt-repository -y -q ppa:clearpath-robotics/docs
+  do_run sudo add-apt-repository -y ppa:clearpath-robotics/docs
   do_run sudo apt-get -y -q update
   do_run sudo apt-get -y install doxygen
 
