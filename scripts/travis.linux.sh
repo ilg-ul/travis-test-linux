@@ -27,6 +27,7 @@ export slug="${build}/${TRAVIS_REPO_SLUG}"
 # -----------------------------------------------------------------------------
 
 export site="${HOME}/out/${GITHUB_DEST_REPO}"
+export doxy="${build}${GITHUB_DOXY_REPO}"
 
 # -----------------------------------------------------------------------------
 
@@ -46,8 +47,8 @@ function do_before_install() {
 
   echo "Before install, bring extra tools..."
 
-  do_run cat /etc/apt/sources.list
-  
+  # do_run cat /etc/apt/sources.list
+
   cd "${HOME}"
 
   # do_run gem install html-proofer
@@ -59,6 +60,9 @@ function do_before_install() {
   # do_run sudo apt-get -y -q update
   # do_run sudo apt-get -y install doxygen
 
+  # http://packages.ubuntu.com/trusty-updates/
+
+  # libclang needed by doxygen 
   do_run sudo apt-get -y install -t trusty-backports libclang1-3.8
 
   mkdir -p ${HOME}/downloads
@@ -68,7 +72,6 @@ function do_before_install() {
   doxy_deb=doxygen_1.8.11-3_amd64.deb
   do_run curl -L --silent https://launchpad.net/ubuntu/+archive/primary/+files/${doxy_deb} -o ${HOME}/downloads/${doxy_deb}
 
-  do_run sudo apt-get remove doxygen
   do_run sudo dpkg -i ${HOME}/downloads/${doxy_deb}
 
   do_run doxygen --version
@@ -85,7 +88,11 @@ function do_before_script() {
   do_run git config --global user.email "${GIT_COMMIT_USER_EMAIL}"
   do_run git config --global user.name "${GIT_COMMIT_USER_NAME}"
 
+  # Bring destination repository. Perhaps --depth=2 would help.
   do_run git clone --branch=master https://github.com/${GITHUB_DEST_REPO}.git "${site}"
+
+  # Bring in the µOS++ sources, for the Doxygen input.
+  do_run git clone --branch=xpack https://github.com/${GITHUB_DOXY_REPO_1}.git "${doxy}"
 
   return 0
 }
@@ -112,7 +119,6 @@ function do_script() {
   # The deployment code is present here not in after_success, 
   # to break the build if not successful.
 
-  cd "${site}"
 
   if [ "${TRAVIS_BRANCH}" != "master" ]
   then 
@@ -120,6 +126,7 @@ function do_script() {
     return 0; 
   fi
 
+  cd "${site}"
   is_dirty=`git status --porcelain`
   # Should detect new, modified, removed files.
   if [ -z "${is_dirty}" ]
@@ -128,6 +135,15 @@ function do_script() {
     exit 0
   fi
 
+  cd "${doxy}/doxygen"
+
+  export DOXYGEN_OUTPUT_DIRECTORY="${HOME}/out/reference"
+  export DOXYGEN_STRIP_FROM_PATH="${doxy}"
+
+  do_run doxygen config-travis.doxyfile
+  do_run ls -l "${DOXYGEN_OUTPUT_DIRECTORY}"
+
+  cd "${site}"
   do_run git diff
 
   do_run git add --all .
