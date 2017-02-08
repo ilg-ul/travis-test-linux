@@ -22,10 +22,12 @@ env:
     - secure: "X6IA/caLY/9sEz7hKX8uNtQUZbMlgJRG2LtkGOV1IYcDxpya72YJhLL0pyd5/TadooGbSVBN1uoUFNsd1gmXggIUudX2SkgzuBh49iV1nxgNHu5tZUaqJfYL44l4SwDVVfnTgtk5/I+Md8EMCjrQVK0iD42fxAaRgUk1OeK8fr4PWQppyLHfsSK5r6aqEMVqR9JumoD+X14fxhKKjyTwNijUToOxwfYffVGbTxPQw53RDqqUCQ+Fk14rqrI20N3I7jnPd3DEsuHQtGLNpkAIKv6665TZqUAbG8bK8EhZ1YjXuaPsQxN/OTiWTneOj/Gna76BM6txxmoI+OMiMNeLSjWewfwhQBpEAK+ftEkdIghhrUyQWNdlRntv2DUesZVlRVvSh1lWUg9Jd02u/mHhAFhNyLkg8s0GJO/A8whoeMM9aPSAckAgRxoas2Rb0lh2TnQ7LA+PGzauP9RK96c3YNV5cp7LulE5QS6JHkAtKMnoVyrxSykRF+WKVSWxbPFqyncs/G/VohNaQc59+sg7JHkSuX7QpnZaUgcitJRQs41aHRuIjrpPPgnXKT4ecjkcLJmOTQ3qBmHFPwYWKb/tAvtIMeGlbLk3sx1x1SS/l4TnmatpX5PC/djMKwqMxXj6/aMUxjoJQ0EErq2NiiMBy4IeeZMFyOW2R7w14eSSFCY="
 
 # Install dependencies.
-# addons:
-#  apt:
-#    packages:
-#      - ...
+addons:
+  apt:
+    packages:
+      - doxygen
+
+
 
 before_install:
   - bash scripts/travis.linux.sh before_install
