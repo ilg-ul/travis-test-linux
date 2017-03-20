@@ -107,7 +107,7 @@ function do_before_install() {
     do_run rm -rf "${work}"
   fi
 
-  npm --version
+  do_run npm --version
 
   return 0
 }
