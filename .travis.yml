@@ -8,6 +8,11 @@ os:
 dist: trusty
 sudo: false
 
+addons:
+  apt:
+    packages:
+      - jq
+
 language: cpp
 
 git:

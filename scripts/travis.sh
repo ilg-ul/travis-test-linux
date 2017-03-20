@@ -110,7 +110,8 @@ function do_before_install() {
   do_run npm --version
   # do_run npm update -g npm
 
-  do_run sudo apt-get install jq
+  # Moved to yml
+  # do_run sudo apt-get install jq
 
   return 0
 }
