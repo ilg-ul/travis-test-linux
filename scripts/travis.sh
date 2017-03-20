@@ -112,8 +112,8 @@ function do_before_install() {
 
   # Moved to yml
   # do_run sudo apt-get install jq
-  jq --version
-  
+  do_run jq --version
+
   return 0
 }
 

@@ -15,6 +15,10 @@ addons:
 
 language: cpp
 
+node_js:
+  - "node"
+  - "7"
+
 git:
   # Limit the clone depth; default is 50.
   depth: 3
