@@ -114,6 +114,8 @@ function do_before_install() {
   # do_run sudo apt-get install jq
   do_run jq --version
 
+  do_run gcc --version
+  
   return 0
 }
 

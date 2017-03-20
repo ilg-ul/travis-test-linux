@@ -13,8 +13,9 @@ addons:
     packages:
       - jq
 
-language: cpp
+# language: cpp
 
+language: node_js
 node_js:
   - "node"
   - "7"
