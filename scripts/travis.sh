@@ -108,7 +108,8 @@ function do_before_install() {
   fi
 
   do_run npm --version
-
+  do_run npm update -g npm
+  
   return 0
 }
 
