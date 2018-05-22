@@ -1,0 +1,30 @@
+{
+  "name": "@ilg/travis-test-linux",
+  "version": "0.0.1",
+  "description": "An xPack withTravis tests",
+  "scripts": {
+    "test": "bash scripts/test.sh",
+    "version": "bash scripts/version.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ilg-ul/travis-test-linux.git"
+  },
+  "keywords": [
+    "xpack",
+    "travis"
+  ],
+  "author": {
+    "name": "Liviu Ionescu",
+    "email": "ilg@livius.net",
+    "url": "http://liviusdotnet.wordpress.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ilg-ul/travis-test-linux/issues"
+  },
+  "config": {},
+  "dependencies": {},
+  "xpack": {},
+  "homepage": "https://github.com/ilg-ul/travis-test-linux"
+}
