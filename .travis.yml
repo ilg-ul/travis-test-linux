@@ -49,7 +49,7 @@ notifications:
 script:
 #  - dpkg -l
 #  - find / -name '*.so*'
-  - curl -L https://www.dropbox.com/s/8n6b00d3jk5vlmd/gnu-mcu-eclipse-qemu-2.8.0-3-20180521-1923-centos64.tgz?dl=0 -o a.tgx
+  - curl -L https://www.dropbox.com/s/8n6b00d3jk5vlmd/gnu-mcu-eclipse-qemu-2.8.0-3-20180521-1923-centos64.tgz?dl=0 -o a.tgz
   - tar x -f a.tgz
   - gnu-mcu-eclipse/qemu/2.8.0-3-20180521-1923/bin/qemu-system-gnuarmeclipse --version
   - gnu-mcu-eclipse/qemu/2.8.0-3-20180521-1923/bin/qemu-system-gnuarmeclipse --help
